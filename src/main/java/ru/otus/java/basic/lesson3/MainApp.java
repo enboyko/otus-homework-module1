@@ -72,7 +72,7 @@ public class MainApp {
 
         if (data <= 10) {
             System.out.println("Red");
-        } else if (data > 10 && data <= 20) {
+        } else if (data <= 20) {
             System.out.println("Yellow");
         } else {
             System.out.println("Green");
