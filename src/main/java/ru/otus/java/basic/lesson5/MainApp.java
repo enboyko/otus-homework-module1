@@ -8,101 +8,79 @@ public class MainApp {
         int[] array1 = {1, 2, 3};
         int[] array2 = {2, 2};
         int[] array3 = {1, 1, 1, 1, 1};
+        System.out.println("First task (getResArray) result:");
         System.out.println(Arrays.toString(getResArray(array1, array2, array3)));
+        System.out.println("==================================================");
 
         int[] maybePointArr = {1, 1, 1, 1, 1, 5};
+        System.out.println("Second task (checkPoint) result:");
         System.out.println(checkPoint(maybePointArr));
+        System.out.println("==================================================");
 
-        int[] someArr = {1, 1, 1, 1, 1, 5};
+        int[] someArr = {80, 50, 10, 8, 7, 6};
+        System.out.println("Third task (knowAscOrDesc):");
         System.out.println(knowAscOrDesc(someArr));
+        System.out.println("==================================================");
 
-        int[] arrToTurnOver = {8, 1, 4, 7, 2, 5};
+        int[] arrToTurnOver = {8, 1, 4, 7, 2, 51, 66};
+        System.out.println("Fourth task (turnOver) result:");
         System.out.println(Arrays.toString(turnOver(arrToTurnOver)));
+        System.out.println("==================================================");
     }
 
-    public static int[] getResArray(int[] initFirstArr, int[] initSecArr, int[] initThirdArr) {
-        int[] newFirstArr;
-        int[] newSecondArr;
-        int[] finalFirst;
-        int[] finalSecondArr;
-        int[] finalThirdArr;
-        int[] intermediateSumArr;
-        int[] ResSumArr;
-
-        // Можно было бы сделать проще - двумерный массив из исходных массивов
-        if (initFirstArr.length < initSecArr.length) {
-            newFirstArr = initFirstArr;
-            newSecondArr = initSecArr;
-        } else {
-            newFirstArr = initSecArr;
-            newSecondArr = initFirstArr;
+    public static int[] getResArray(int[] arr1, int[] arr2, int[] arr3) {
+        int maxLength = arr1.length;
+        maxLength = Math.max(maxLength, arr2.length);
+        maxLength = Math.max(maxLength, arr3.length);
+        int[] resultArr = new int[maxLength];
+        for (int i = 0; i < arr1.length; i++) {
+            resultArr[i] += arr1[i];
         }
-
-        if (initThirdArr.length < newFirstArr.length) {
-            finalFirst = initThirdArr;
-            finalSecondArr = newSecondArr;
-            finalThirdArr = initThirdArr;
-        } else if (initThirdArr.length < newSecondArr.length) {
-            finalFirst = newFirstArr;
-            finalSecondArr = initThirdArr;
-            finalThirdArr = newSecondArr;
-        } else {
-            finalFirst = newFirstArr;
-            finalSecondArr = newSecondArr;
-            finalThirdArr = initThirdArr;
+        for (int i = 0; i < arr2.length; i++) {
+            resultArr[i] += arr2[i];
         }
-
-        intermediateSumArr = finalSecondArr;
-        for (int i = 0; i < finalFirst.length; i++) {
-            intermediateSumArr[i] = intermediateSumArr[i] + finalFirst[i];
+        for (int i = 0; i < arr3.length; i++) {
+            resultArr[i] += arr3[i];
         }
-
-        ResSumArr = finalThirdArr;
-        for (int i = 0; i < intermediateSumArr.length; i++) {
-            ResSumArr[i] = ResSumArr[i] + intermediateSumArr[i];
-        }
-        return ResSumArr;
+        return resultArr;
     }
 
     public static boolean checkPoint(int[] arrToCheck) {
         int sum = 0;
         int leftSum = 0;
-        boolean check = false;
         for (int i = 0; i < arrToCheck.length; i++) {
             sum += arrToCheck[i];
         }
         for (int i = 0; i < arrToCheck.length; i++) {
             leftSum += arrToCheck[i];
-            sum -= arrToCheck[i];
-            if (leftSum == sum) {
-                check = true;
-                break;
+            if (leftSum * 2 == sum) {
+                return true;
             }
         }
-        return check;
+        return false;
     }
 
-    public static String knowAscOrDesc(int[] ascOrDescArr) {
-        String order = "";
+    public static boolean knowAscOrDesc(int[] ascOrDescArr) {
+        boolean order = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input order: 1 for Ascending or 2 for Descending");
         int choice = scanner.nextInt();
-
-        // По сути, здесь не нужно условие (лишь цикл for), т.к. вне зависимости от выбора пользователя мы выведем ему порядок массива
         if (choice == 1) {
             for (int i = 0; i < ascOrDescArr.length - 1; i++) {
                 if (ascOrDescArr[i] < ascOrDescArr[i + 1]) {
-                    order = "Ascending";
+                    order = true;
                 } else {
-                    order = "Descending";
+                    order = false;
+                    break;
                 }
             }
         } else {
             for (int i = 0; i < ascOrDescArr.length - 1; i++) {
                 if (ascOrDescArr[i] > ascOrDescArr[i + 1]) {
-                    order = "Descending";
+                    order = true;
                 } else {
-                    order = "Ascending";
+                    order = false;
+                    break;
                 }
             }
         }
@@ -110,10 +88,11 @@ public class MainApp {
     }
 
     public static int[] turnOver(int[] enterArr) {
-        int[] overturnedArr = new int[enterArr.length];
-        for (int i = 0; i < enterArr.length; i++) {
-            overturnedArr[enterArr.length - 1 - i] = enterArr[i];
+        for (int i = 0; i < enterArr.length / 2; i++) {
+            int temp = enterArr[i];
+            enterArr[i] = enterArr[enterArr.length - 1 - i];
+            enterArr[enterArr.length - 1 - i] = temp;
         }
-        return overturnedArr;
+        return enterArr;
     }
 }
