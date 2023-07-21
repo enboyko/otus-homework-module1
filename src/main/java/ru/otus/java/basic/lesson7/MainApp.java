@@ -85,7 +85,6 @@ public class MainApp {
         }
         for (int j = 0; j < arr[1].length; j++) {
             result += arr[1][j];
-
         }
         return result;
     }
