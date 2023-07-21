@@ -61,30 +61,15 @@ public class MainApp {
     }
 
     public static boolean knowAscOrDesc(int[] ascOrDescArr) {
-        boolean order = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input order: 1 for Ascending or 2 for Descending");
         int choice = scanner.nextInt();
-        if (choice == 1) {
-            for (int i = 0; i < ascOrDescArr.length - 1; i++) {
-                if (ascOrDescArr[i] < ascOrDescArr[i + 1]) {
-                    order = true;
-                } else {
-                    order = false;
-                    break;
-                }
-            }
-        } else {
-            for (int i = 0; i < ascOrDescArr.length - 1; i++) {
-                if (ascOrDescArr[i] > ascOrDescArr[i + 1]) {
-                    order = true;
-                } else {
-                    order = false;
-                    break;
-                }
+        for (int i = 0; i < ascOrDescArr.length - 1; i++) {
+            if ((choice == 1 && ascOrDescArr[i] > ascOrDescArr[i + 1]) || (choice == 2 && ascOrDescArr[i] < ascOrDescArr[i + 1])) {
+                return false;
             }
         }
-        return order;
+        return true;
     }
 
     public static int[] turnOver(int[] enterArr) {
