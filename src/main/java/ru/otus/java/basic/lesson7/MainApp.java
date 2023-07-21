@@ -4,7 +4,7 @@ package ru.otus.java.basic.lesson7;
 public class MainApp {
     public static void main(String[] args) {
         int[][] arrWithZeros = {{0, 0, 5, 0}, {6, 0, 0, 0}, {0, 4, 0, 10}};
-        System.out.println("First task (sumOfPositiveElements):");
+        System.out.println("\nFirst task (sumOfPositiveElements):");
         System.out.println("Positive elements sum equals: " + sumOfPositiveElements(arrWithZeros));
         System.out.println("==================================================");
 
@@ -26,7 +26,7 @@ public class MainApp {
         System.out.println("==================================================");
 
         int[][] arrToSum = {{1, 6, 8, 3, 4}, {6, 4, 9, 1, 10}, {5, 4, 7, 2, 3}, {6, 9, 7, 2, 5}, {3, 6, 7, 3, 9}};
-        System.out.println("Fourth task (findMax):");
+        System.out.println("Fourth task (sumSecondLineElements):");
         System.out.println("Second line elements sum equals: " + sumSecondLineElements(arrToSum));
         System.out.println("==================================================");
     }
