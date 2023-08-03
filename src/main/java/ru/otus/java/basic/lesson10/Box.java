@@ -12,25 +12,13 @@ public class Box {
         return length;
     }
 
-//    public void setLength(int length) {
-//        this.length = length;
-//    }
-
     public int getWidth() {
         return width;
     }
 
-//    public void setWidth(int width) {
-//        this.width = width;
-//    }
-
     public int getHeight() {
         return height;
     }
-
-//    public void setHeight(int height) {
-//        this.height = height;
-//    }
 
     public String getColour() {
         return colour;
@@ -49,16 +37,6 @@ public class Box {
         isOpen = open;
         System.out.println("The box has been opened: " + isOpen);
     }
-
-
-//    public Box(int length, int width, int height, String colour, boolean isOpen) {
-//        this.length = length;
-//        this.width = width;
-//        this.height = height;
-//        this.colour = colour;
-//        this.isOpen = isOpen;
-//    }
-
 
     public Box(int length, int width, int height, String colour) {
         this.length = length;
