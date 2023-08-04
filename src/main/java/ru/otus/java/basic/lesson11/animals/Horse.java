@@ -1,7 +1,7 @@
 package ru.otus.java.basic.lesson11.animals;
 
-public class Dog extends Animal {
-    final int wasteOfSwimmingEndurance = 2;
+public class Horse extends Animal {
+    final int wasteOfSwimmingEndurance = 4;
 
     @Override
     public void setSwimmingSpeed(int swimmingSpeed) {
@@ -13,7 +13,7 @@ public class Dog extends Animal {
         return wasteOfSwimmingEndurance;
     }
 
-    public Dog(String name, int runningSpeed, int endurance, int swimmingSpeed) {
+    public Horse(String name, int runningSpeed, int endurance, int swimmingSpeed) {
         super(name, runningSpeed, endurance);
         this.swimmingSpeed = swimmingSpeed;
     }

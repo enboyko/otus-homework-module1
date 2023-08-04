@@ -2,24 +2,48 @@ package ru.otus.java.basic.lesson11.animals;
 
 public abstract class Animal {
     final String name;
-    final int runningSpeed;
+    int runningSpeed;
     int swimmingSpeed;
     int endurance;
     final int wasteOfRunningEndurance = 1;
-    int wasteOfSwimmingEndurance;
 
     public String getName() {
         return name;
     }
 
+    public int getRunningSpeed() {
+        return runningSpeed;
+    }
+
+    public void setRunningSpeed(int runningSpeed) {
+        this.runningSpeed = runningSpeed;
+    }
+
+    public int getSwimmingSpeed() {
+        return swimmingSpeed;
+    }
+
+    public abstract void setSwimmingSpeed(int swimmingSpeed);
+
+    public int getEndurance() {
+        return endurance;
+    }
+
+    public void setEndurance(int endurance) {
+        this.endurance = endurance;
+    }
+
+    public int getWasteOfRunningEndurance() {
+        return wasteOfRunningEndurance;
+    }
+
+    public abstract int getWasteOfSwimmingEndurance();
 
     public Animal(String name, int runningSpeed, int endurance) {
         this.name = name;
         this.runningSpeed = runningSpeed;
         this.endurance = endurance;
     }
-
-
 
     public double run(int distance) {
         double time;
@@ -41,11 +65,11 @@ public abstract class Animal {
         double time;
         System.out.println("I am::");
         Animal.this.info();
-        if (wasteOfSwimmingEndurance == 0) {
-            System.out.println("I can't swim, bro((");
+        if (this.getWasteOfSwimmingEndurance() == 0) {
+            System.out.println("I can't swim, bro((\n");
             return -1;
         }
-        endurance -= distance * wasteOfSwimmingEndurance;
+        endurance -= distance * this.getWasteOfSwimmingEndurance();
         if (endurance < 0) {
             System.out.println("I'm tired, bro");
             return time = -1;
@@ -63,7 +87,7 @@ public abstract class Animal {
                 + "\nSwimming speed: " + swimmingSpeed
                 + "\nEndurance: " + endurance
                 + "\nWaste of running endurance: " + wasteOfRunningEndurance
-                + "\nWaste of swimming endurance: " + wasteOfSwimmingEndurance);
+                + "\nWaste of swimming endurance: " + this.getWasteOfSwimmingEndurance());
         System.out.println();
     }
 }
