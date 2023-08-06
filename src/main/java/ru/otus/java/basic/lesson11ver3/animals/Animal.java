@@ -1,4 +1,4 @@
-package ru.otus.java.basic.lesson11.animals;
+package ru.otus.java.basic.lesson11ver3.animals;
 
 public abstract class Animal {
     final String name;
@@ -6,7 +6,6 @@ public abstract class Animal {
     int swimmingSpeed;
     int endurance;
     final int wasteOfRunningEndurance = 1;
-    int wasteOfSwimmingEndurance;
 
     public String getName() {
         return name;
@@ -38,7 +37,7 @@ public abstract class Animal {
         return wasteOfRunningEndurance;
     }
 
-//    public abstract int getWasteOfSwimmingEndurance();
+    public abstract int getWasteOfSwimmingEndurance();
 
     public Animal(String name, int runningSpeed, int endurance) {
         this.name = name;
@@ -66,11 +65,11 @@ public abstract class Animal {
         double time;
         System.out.println("I am::");
         Animal.this.info();
-        if (this.wasteOfSwimmingEndurance == 0) {
+        if (this.getWasteOfSwimmingEndurance() == 0) {
             System.out.println("I can't swim, bro((\n");
             return -1;
         }
-        endurance -= distance * this.wasteOfSwimmingEndurance;
+        endurance -= distance * this.getWasteOfSwimmingEndurance();
         if (endurance < 0) {
             System.out.println("I'm tired, bro");
             return time = -1;
@@ -88,7 +87,7 @@ public abstract class Animal {
                 + "\nSwimming speed: " + swimmingSpeed
                 + "\nEndurance: " + endurance
                 + "\nWaste of running endurance: " + wasteOfRunningEndurance
-                + "\nWaste of swimming endurance: " + this.wasteOfSwimmingEndurance);
+                + "\nWaste of swimming endurance: " + this.getWasteOfSwimmingEndurance());
         System.out.println();
     }
 }
