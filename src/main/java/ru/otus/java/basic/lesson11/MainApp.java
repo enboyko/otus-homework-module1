@@ -18,10 +18,15 @@ public class MainApp {
         Animal sharik = new Dog("Sharik", 10, 150,2);
         sharik.swim(70);
         sharik.run(2);
+        sharik.setSwimmingSpeed(500);
+        sharik.info();
         System.out.println("================================");
         System.out.println("================================");
         Animal buzefal = new Horse("Buzefal", 60, 300,2);
         buzefal.swim(70);
         buzefal.run(2);
+        System.out.println("================================");
+        System.out.println(murzik.getWasteOfSwimmingEndurance());
+        System.out.println(sharik.getWasteOfSwimmingEndurance());
     }
 }

@@ -1,11 +1,11 @@
 package ru.otus.java.basic.lesson11.animals;
 
-public abstract class Animal {
+public class Animal {
     final String name;
     int runningSpeed;
     int swimmingSpeed;
     int endurance;
-    final int wasteOfRunningEndurance = 1;
+    final int DEFAULT_WASTE_OF_RUNNING_ENDURANCE = 1;
     int wasteOfSwimmingEndurance;
 
     public String getName() {
@@ -24,7 +24,9 @@ public abstract class Animal {
         return swimmingSpeed;
     }
 
-    public abstract void setSwimmingSpeed(int swimmingSpeed);
+    public void setSwimmingSpeed(int swimmingSpeed) {
+        this.swimmingSpeed = swimmingSpeed;
+    }
 
     public int getEndurance() {
         return endurance;
@@ -34,11 +36,14 @@ public abstract class Animal {
         this.endurance = endurance;
     }
 
-    public int getWasteOfRunningEndurance() {
-        return wasteOfRunningEndurance;
+    public int getDEFAULT_WASTE_OF_RUNNING_ENDURANCE() {
+        return DEFAULT_WASTE_OF_RUNNING_ENDURANCE;
     }
 
-//    public abstract int getWasteOfSwimmingEndurance();
+    public int getWasteOfSwimmingEndurance() {
+        System.out.println("This animal's waste of swimming endurance: " + wasteOfSwimmingEndurance);
+        return wasteOfSwimmingEndurance;
+    }
 
     public Animal(String name, int runningSpeed, int endurance) {
         this.name = name;
@@ -50,7 +55,7 @@ public abstract class Animal {
         double time;
         System.out.println("I am::");
         Animal.this.info();
-        endurance -= distance * wasteOfRunningEndurance;
+        endurance -= distance * DEFAULT_WASTE_OF_RUNNING_ENDURANCE;
         if (endurance < 0) {
             System.out.println("I'm tired, bro");
             return time = -1;
@@ -66,11 +71,11 @@ public abstract class Animal {
         double time;
         System.out.println("I am::");
         Animal.this.info();
-        if (this.wasteOfSwimmingEndurance == 0) {
+        if (wasteOfSwimmingEndurance == 0) {
             System.out.println("I can't swim, bro((\n");
             return -1;
         }
-        endurance -= distance * this.wasteOfSwimmingEndurance;
+        endurance -= distance * wasteOfSwimmingEndurance;
         if (endurance < 0) {
             System.out.println("I'm tired, bro");
             return time = -1;
@@ -87,8 +92,8 @@ public abstract class Animal {
                 + "\nRunning speed: " + runningSpeed
                 + "\nSwimming speed: " + swimmingSpeed
                 + "\nEndurance: " + endurance
-                + "\nWaste of running endurance: " + wasteOfRunningEndurance
-                + "\nWaste of swimming endurance: " + this.wasteOfSwimmingEndurance);
+                + "\nWaste of running endurance: " + DEFAULT_WASTE_OF_RUNNING_ENDURANCE
+                + "\nWaste of swimming endurance: " + wasteOfSwimmingEndurance);
         System.out.println();
     }
 }
