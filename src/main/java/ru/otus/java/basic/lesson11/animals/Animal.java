@@ -5,7 +5,7 @@ public class Animal {
     int runningSpeed;
     int swimmingSpeed;
     int endurance;
-    final int DEFAULT_WASTE_OF_RUNNING_ENDURANCE = 1;
+    static final int DEFAULT_WASTE_OF_RUNNING_ENDURANCE = 1;
     int wasteOfSwimmingEndurance;
 
     public String getName() {
@@ -36,10 +36,6 @@ public class Animal {
         this.endurance = endurance;
     }
 
-    public int getDEFAULT_WASTE_OF_RUNNING_ENDURANCE() {
-        return DEFAULT_WASTE_OF_RUNNING_ENDURANCE;
-    }
-
     public int getWasteOfSwimmingEndurance() {
         System.out.println("This animal's waste of swimming endurance: " + wasteOfSwimmingEndurance);
         return wasteOfSwimmingEndurance;
@@ -63,7 +59,7 @@ public class Animal {
         time = distance / runningSpeed;
         System.out.println("I've run " + distance + " meters for " + time + " seconds\n");
         System.out.println("My current state::");
-        Animal.this.info();
+        info();
         return time;
     }
 
@@ -83,7 +79,7 @@ public class Animal {
         time = distance / swimmingSpeed;
         System.out.println("I've swum " + distance + " meters for " + time + " seconds\n");
         System.out.println("My current state::");
-        Animal.this.info();
+        info();
         return time;
     }
 
