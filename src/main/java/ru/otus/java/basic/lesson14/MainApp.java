@@ -36,6 +36,9 @@ public class MainApp {
                     interimSum = sum;
                     System.out.println("Interim sum equals: " + interimSum);
                 } catch (NumberFormatException ex) {
+                    System.out.println("\nFailed to parse String element to int!\n" +
+                            "The element is: " + arr[i][j] + "\n" +
+                            "Its indexes are: [" + i + "][" + j + "]\n");
                     throw new AppArrayDataException("custom AppArrayDataException", ex);
                 }
             }
